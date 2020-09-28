@@ -5,11 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     card: {
         height: "100%",
-        display: 'flex'
+        display: "flex"
     },
     cardActionArea: {
         flexGrow: 1,
-        flexDirection: 'column'
+        flexDirection: "column"
+    },
+    media: {
+        maxHeight: "300px",
+        maxWidth: "90%",
+        margin: "0 auto",
+        padding: "20px 0"
     }
 }))
 
@@ -24,7 +30,7 @@ function Memes(props) {
                             <Card variant="outlined" className={classes.card}>
                                 <CardActionArea className={classes.cardActionArea}>
                                     <CardHeader title={meme.name} />
-                                    <CardMedia component="img" src={meme.url} alt={meme.name} title={meme.name} />
+                                    <CardMedia className={classes.media} component="img" src={meme.url} alt={meme.name} title={meme.name} />
                                 </CardActionArea>
                             </Card>
                         </Grid>
