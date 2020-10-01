@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import Pagination from '@material-ui/lab/Pagination';
+import CustomPagination from '../components/layout/CustomPagination';
 import Memes from '../components/Memes';
+import axios from 'axios';
 
 function HomePage() {
-    const [data, setData] = useState([]);
+    const [memes, setMemes] = useState([]);
+    const [page, setPage] = useState(0);
+
+    async function getMemes() {
+        const response = await axios.get("https://api.imgflip.com/get_memes");
+        setMemes(response.data.data.memes);
+    }
 
     useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes")
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.data);
-                setData(data.data)
-            });
+        getMemes();
     }, []);
 
     return (
         <div>
-            <Pagination count={10} />
-            <Memes {...data} />
-            <Pagination count={10} />
+            <CustomPagination page={page} setPage={setPage} />
+            <Memes memes={memes} page={page} />
+            <CustomPagination page={page} setPage={setPage} />
         </div>
     )
 }
