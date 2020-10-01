@@ -10,10 +10,27 @@ function CustomPagination(props) {
     return (
         <Grid container justify="space-around">
             <Hidden xsDown>
-                <Pagination count={10} page={props.page + 1} onChange={handleEvent} variant="outlined" color="secondary" showFirstButton showLastButton boundaryCount={3} />
+                <Pagination 
+                    count={10} 
+                    page={props.page + 1} 
+                    onChange={handleEvent} 
+                    variant="outlined" 
+                    color="secondary" 
+                    showFirstButton 
+                    showLastButton 
+                    boundaryCount={3} 
+                />
             </Hidden>
             <Hidden smUp>
-                <Pagination size="small" count={10} page={props.page + 1} onChange={handleEvent} variant="outlined" color="secondary" boundaryCount={2} />
+                <Pagination 
+                    size="small" 
+                    count={10} 
+                    page={props.page + 1} 
+                    onChange={handleEvent} 
+                    variant="outlined" 
+                    color="secondary" 
+                    boundaryCount={2} 
+                />
             </Hidden>
         </Grid>
     )

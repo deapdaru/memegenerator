@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { Card, CardContent, CardHeader, CardMedia, Grid, InputLabel, TextField, FormControl, Select, MenuItem, Typography, Button, Dialog, DialogTitle, IconButton, DialogContent, Divider } from '@material-ui/core';
+import { 
+    Card, CardContent, CardHeader, CardMedia, Grid, InputLabel, TextField, FormControl, 
+    Select, MenuItem, Typography, Button, Dialog, DialogTitle, IconButton, DialogContent, Divider 
+} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close'
 import { makeStyles } from '@material-ui/core/styles';
 import CustomTextInputs from './layout/CustomTextInputs';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     formControl: {
         marginTop: "10px"
     },
@@ -32,9 +36,10 @@ function EditMeme(props) {
     const meme = props.meme;
     const [generatedMeme, setGeneratedMeme] = useState("");
     const [open, setOpen] = useState(false);
+    const params = useParams();
 
     var myFormData = new FormData();
-    myFormData.append("template_id", meme.id);
+    myFormData.append("template_id", params.id);
     myFormData.append("username", "DeapDaru");
     myFormData.append("password", "deapdaru");
     myFormData.append("font", "impact");
@@ -63,7 +68,6 @@ function EditMeme(props) {
                 }
             });
             setGeneratedMeme(response.data.data.url);
-            console.log(response.data.data);
             setOpen(true);
         }
         catch (err) {
@@ -85,7 +89,7 @@ function EditMeme(props) {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Typography variant="body1">Enter details to make the meme:</Typography>
-                                <Typography variant="caption" gutterBottom>(Enter your imgflip account's username and password or leave blank to make memes through default profile linked to my account!)</Typography>
+                                <Typography variant="caption" gutterBottom>(Enter your own imgflip account's username and password or leave blank to make memes through default profile linked to my account!)</Typography>
                                 <form noValidate id="myForm" name="myForm">
                                     <TextField
                                         id="username" 
@@ -117,7 +121,7 @@ function EditMeme(props) {
                                             <MenuItem value="arial">Arial</MenuItem>
                                         </Select>
                                     </FormControl>
-                                    <CustomTextInputs myFormData={myFormData} boxCount={meme.box_count} />
+                                    <CustomTextInputs myFormData={myFormData} boxCount={params.text_boxes} />
                                     <Button
                                         className={classes.button}
                                         variant="outlined" 

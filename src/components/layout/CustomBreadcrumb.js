@@ -5,7 +5,7 @@ import HomeIcon from '@material-ui/icons/Home';
 function CustomBreadcrumb(props) {
     return (
         <div>
-            <Breadcrumbs style={{paddingLeft: "24px"}} aria-label="breadcrumb">
+            <Breadcrumbs style={{paddingLeft: "2%"}} aria-label="breadcrumb">
                 <Link color="inherit" href="/">
                     <HomeIcon style={{marginTop:"5px"}} />
                 </Link>

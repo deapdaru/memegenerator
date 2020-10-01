@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     formControl: {
         marginTop: "10px"
     }
@@ -22,7 +22,17 @@ function CustomTextInputs(props) {
     const TextInputs = () => {
         let comp = [];
         for (let i = 1; i <= props.boxCount; i++) {
-            comp.push(<TextField key={i} id={"text-input-" + i} label={"Enter text #" + i} variant="outlined" fullWidth onInput={appendBoxText} className={classes.formControl} />);
+            comp.push(
+                <TextField 
+                    key={i} 
+                    id={"text-input-" + i} 
+                    label={"Enter text #" + i} 
+                    variant="outlined" 
+                    fullWidth 
+                    onInput={appendBoxText} 
+                    className={classes.formControl} 
+                />
+            );
         }
         return comp;
     }

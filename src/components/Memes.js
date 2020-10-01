@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Loading = () => (
-    <div style={{height:"300px", display: "flex", alignItems: "center"}}>
+    <div style={{height:"400px", display: "flex", alignItems: "center"}}>
         <CircularProgress/>
     </div>
 )
@@ -52,7 +52,13 @@ function Memes(props) {
                                         <CardActionArea className={classes.cardActionArea}>
                                             <LazyLoad placeholder={<Loading/>}>
                                                 <CardHeader title={meme.name} />
-                                                <CardMedia className={classes.media} component="img" src={meme.url} alt={meme.name} title={meme.name} />
+                                                <CardMedia 
+                                                    className={classes.media} 
+                                                    component="img" 
+                                                    src={meme.url} 
+                                                    alt={meme.name} 
+                                                    title={meme.name} 
+                                                />
                                             </LazyLoad>
                                         </CardActionArea>
                                     </Card>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
 import HomePage from './views/HomePage';
 import MemeEditPage from './views/MemeEditPage';
 import Error from './components/layout/Error';
