@@ -2,9 +2,12 @@ import React from 'react';
 
 function Header() {
     const headerStyle = {
-        fontSize: "2.5em",
+        fontSize: "2em",
         textAlign: "center",
-        padding: "20px"
+        padding: "40px",
+        marginBottom: "24px",
+        backgroundColor: "#c51162",
+        color: "#fff"
     }
     return (
         <header style={headerStyle}>
