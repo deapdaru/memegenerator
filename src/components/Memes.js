@@ -1,7 +1,7 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
 import { Link } from 'react-router-dom';
-import { Card, CardActionArea, CardHeader, CardMedia, CircularProgress, Grid, Zoom } from '@material-ui/core';
+import { Card, CardActionArea, CardHeader, CardMedia, CircularProgress, Grid, Fade } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
@@ -41,17 +41,17 @@ function Memes(props) {
                     .slice(props.page*10,props.page*10 + 10)
                     .map(meme => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={meme.id}>
-                            <Zoom in timeout={1000}>
-                                <Link className={classes.link} to={{
-                                    pathname: "/" + meme.id + "/" + meme.box_count,
-                                    state: {
-                                        meme: meme
-                                    }
-                                }}>
+                            <Link className={classes.link} to={{
+                                pathname: "/" + meme.id + "/" + meme.box_count,
+                                state: {
+                                    meme: meme
+                                }
+                            }}>
+                                <Fade in timeout={1000}>
                                     <Card variant="outlined" className={classes.card}>
                                         <CardActionArea className={classes.cardActionArea}>
-                                            <CardHeader title={meme.name} />
                                             <LazyLoad placeholder={<Loading/>}>
+                                                <CardHeader title={meme.name} />
                                                 <CardMedia 
                                                     className={classes.media} 
                                                     component="img" 
@@ -62,8 +62,8 @@ function Memes(props) {
                                             </LazyLoad>
                                         </CardActionArea>
                                     </Card>
-                                </Link>
-                            </Zoom>
+                                </Fade>
+                            </Link>
                         </Grid>
                     )) : (<div></div>)}
             </Grid>
