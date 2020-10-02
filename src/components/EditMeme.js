@@ -38,8 +38,6 @@ function EditMeme(props) {
     const [open, setOpen] = useState(false);
     const params = useParams();
 
-    console.log(process.env);
-
     var myFormData = new FormData();
     myFormData.append("template_id", params.id);
     myFormData.append("username", process.env.REACT_APP_USERNAME);
