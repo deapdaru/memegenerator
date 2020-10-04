@@ -39,7 +39,7 @@ function Memes(props) {
                 {props.memes !== undefined ?
                     props.memes
                     .slice(props.page*10,props.page*10 + 10)
-                    .map(meme => (
+                    .map((meme, index) => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={meme.id}>
                             <Link className={classes.link} to={{
                                 pathname: "/" + meme.id + "/" + meme.box_count,
@@ -47,7 +47,7 @@ function Memes(props) {
                                     meme: meme
                                 }
                             }}>
-                                <Fade in timeout={1000}>
+                                <Fade in timeout={index*750}>
                                     <Card variant="outlined" className={classes.card}>
                                         <CardActionArea className={classes.cardActionArea}>
                                             <LazyLoad placeholder={<Loading/>}>
