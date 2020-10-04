@@ -47,7 +47,7 @@ function Memes(props) {
                                     meme: meme
                                 }
                             }}>
-                                <Fade in timeout={index*750}>
+                                <Fade in timeout={props.fade === 'top' ? (index+1)*500 : (9 - index + 1)*500}>
                                     <Card variant="outlined" className={classes.card}>
                                         <CardActionArea className={classes.cardActionArea}>
                                             <LazyLoad placeholder={<Loading/>}>
