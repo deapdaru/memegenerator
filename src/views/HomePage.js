@@ -17,8 +17,6 @@ function HomePage() {
         getMemes();
     }, []);
 
-    console.log(fade);
-
     return (
         <main>
             <div onClick={() => setFade('top')}>
