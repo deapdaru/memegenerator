@@ -31,13 +31,13 @@ Try it out live at - <https://meme-imgflipapi.netlify.app/>
 ## Screenshots:
 
 - ### Home Page
-    ![Homepage](images\homepage.png)
+    ![Homepage](images/homepage.png "Homepage")
 
 - ### Edit Meme Page
-    ![Edit Meme](images\edit-meme-page.png)
+    ![Edit Meme](images/edit-meme-page.png "Edit Meme")
 
 - ### Mobile Responsive View for Edit Meme
-    ![Responsive View](images\responsive.png)
+    ![Responsive View](images/responsive.png "Responsive View")
 
 - ### Generated Meme Modal
-    ![Meme Created Modal](images\meme-generate.png)
+    ![Meme Created Modal](images/meme-generate.png "Meme Created Modal")
