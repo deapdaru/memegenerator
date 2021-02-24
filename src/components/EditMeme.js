@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CustomTextInputs from './layout/CustomTextInputs';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(() => ({
     formControl: {
@@ -37,6 +38,7 @@ function EditMeme(props) {
     const [generatedMeme, setGeneratedMeme] = useState("");
     const [open, setOpen] = useState(false);
     const params = useParams();
+    const history = useHistory();
 
     var myFormData = new FormData();
     myFormData.append("template_id", params.id);
@@ -44,16 +46,10 @@ function EditMeme(props) {
     myFormData.append("password", process.env.REACT_APP_PASSWORD);
     myFormData.append("font", "impact");
 
-    const appendUsername = (event) => {
-        myFormData.set("username", event.target.value);
-    }
-
-    const appendPassword = (event) => {
-        myFormData.set("password", event.target.value);
-    }
-
-    const appendFont = (event) => {
-        myFormData.set("font", event.target.value);
+    // One single event handler to update all keys in FormData
+    const appendFormInput = (key) => (event) => {
+        console.log(key, event.target.value);
+        myFormData.set(key, event.target.value);
     }
 
     const modalClose = () => {
@@ -62,6 +58,7 @@ function EditMeme(props) {
 
     async function generateMeme() {
         try {
+            console.log(myFormData);
             const response = await axios.post("https://api.imgflip.com/caption_image", myFormData, {
                 headers: {
                 'Content-Type': 'multipart/form-data'
@@ -97,7 +94,7 @@ function EditMeme(props) {
                                         variant="outlined" 
                                         fullWidth 
                                         className={classes.formControl}
-                                        onInput={appendUsername}
+                                        onInput={appendFormInput('username')}
                                     />
                                     <TextField 
                                         id="password" 
@@ -106,7 +103,7 @@ function EditMeme(props) {
                                         variant="outlined" 
                                         fullWidth 
                                         className={classes.formControl}
-                                        onInput={appendPassword}
+                                        onInput={appendFormInput('password')}
                                     />
                                     <FormControl variant="outlined" className={classes.formControl} fullWidth>
                                         <InputLabel id="font-label">Font</InputLabel>
@@ -115,13 +112,13 @@ function EditMeme(props) {
                                             id="font"
                                             defaultValue="impact"
                                             label="Font"
-                                            onChange={appendFont}
+                                            onChange={appendFormInput('font')}
                                         >
                                             <MenuItem value="impact">Impact</MenuItem>
                                             <MenuItem value="arial">Arial</MenuItem>
                                         </Select>
                                     </FormControl>
-                                    <CustomTextInputs myFormData={myFormData} boxCount={params.text_boxes} />
+                                    <CustomTextInputs myFormData={myFormData} appendFormInput={appendFormInput} boxCount={params.text_boxes} />
                                     <Button
                                         className={classes.button}
                                         variant="outlined" 
@@ -140,7 +137,7 @@ function EditMeme(props) {
             <Dialog scroll="body" fullScreen open={open} onClose={modalClose}>
                 <DialogTitle>
                     Meme Generated!
-                    <IconButton style={{position: "absolute", top: "10px", right: "10px"}} onClick={modalClose}>
+                    <IconButton style={{position: "absolute", top: "10px", right: "10px"}} onClick={() => history.push('/')}>
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>

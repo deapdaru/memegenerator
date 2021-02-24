@@ -8,16 +8,8 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-
 function CustomTextInputs(props) {
     const classes = useStyles();
-
-    const appendBoxText = () => {
-        for (let i = 0; i < props.boxCount; i++) {
-            let value = (document.getElementById(`text-input-${i+1}`) !== null ? document.getElementById(`text-input-${i+1}`).value : " ");
-            props.myFormData.set(`boxes[${i}][text]`, value);
-        }
-    }
 
     const TextInputs = () => {
         let comp = [];
@@ -29,7 +21,7 @@ function CustomTextInputs(props) {
                     label={"Enter text #" + i} 
                     variant="outlined" 
                     fullWidth 
-                    onInput={appendBoxText} 
+                    onInput={props.appendFormInput(`boxes[${i}][text]`)} 
                     className={classes.formControl} 
                 />
             );

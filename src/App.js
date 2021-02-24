@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './views/HomePage';
 import MemeEditPage from './views/MemeEditPage';
@@ -7,6 +7,12 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 function App() {
+
+  // to remove all console.logs() used during development
+  useEffect(() => {
+		console.log = function() {}
+	}, []);
+
   return (
     <Router>
       <Header />
