@@ -1,5 +1,7 @@
 # Meme Generator
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cdf73691-ea65-4a31-a885-85eddf578f7c/deploy-status)](https://app.netlify.com/sites/meme-imgflipapi/deploys)
+
 **React project** scaffolded out using 'npx create-react-app', made during my learning period as Frontend Mentee at DJ Unicode.
 
 Try it out live at - <https://meme-imgflipapi.netlify.app/>
